@@ -21,7 +21,7 @@ def menu():
 
     while True:
         print("(1) See current project's time\n(2) See all projects\n(3) Change active project\n\
-(4) Add project\n(5) Exit")
+(4) Add project\n(5) Remove project\n(6) Exit")
 
         option = input("--> ")
 
@@ -52,10 +52,31 @@ def menu():
 
         elif option == '4':
             proj_name = input("\nInput the project name: ")
-            projects[proj_name] = 0  # add project to dictionary
-            print("")
+            if proj_name in projects:
+                print("A project with that name already exists\n")
+            else:
+                projects[proj_name] = 0  # add project to dictionary
+                print("")
 
         elif option == '5':
+            for p in projects:
+                print(f"\nName: {p}\nTime elapsed: {projects[p]} seconds")
+
+            proj_name = input("\nInput the project name: ")
+            print("")
+
+            if proj_name == 'None':
+                print("Cant delete None\n")
+
+            elif proj_name in projects:
+                if proj_name == active_project:  # if you delete the current active project
+                    active_project = 'None'
+                del projects[proj_name]
+
+            else:
+                print("Incorrect Project Name\n")
+
+        elif option == '6':
             exit(1)
 
         else:
