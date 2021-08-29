@@ -1,5 +1,6 @@
-import multiprocessing
+'''import multiprocessing
 import time
+
 
 def f(d):
     secs = 0
@@ -15,19 +16,36 @@ def menu():
 
     while True:
         time.sleep(0.5)
-        print(d)
+        try:
+            print(f"{d['a']}")
+        except:
+            print("Key error")
 
 
 if __name__ == '__main__':
     with multiprocessing.Manager() as manager:
         d = manager.dict()
+        d['None'] = 0
+        p = multiprocessing.Process(target=f, args=(d,))
+        p.start()
+        time.sleep(1)
+        
+        while True:
+            time.sleep(0.5)
+            try:
+                print(f"{d['a']}")
+            except:
+                print("Key erraor")
 
-        menu()
+
+
+        #menu()
 
 
 
 
-'''import multiprocessing
+'''
+import multiprocessing
 import time
 
 
@@ -36,30 +54,28 @@ active_project = 'None'
 
 
 
-def clock(arg_projects):
+def clock(projects):
     solid_active_project = active_project  # to prevent the change of active_project carring times before thread is killed
-    clock_time = arg_projects[solid_active_project]  # start clock where the project already was
+    clock_time = projects[solid_active_project]  # start clock where the project already was
     while True:
         clock_time += 1
         time.sleep(1)
         # print(f'{clock_time}')
-        arg_projects[solid_active_project] = clock_time
+        projects[solid_active_project] = clock_time
 
 
 def menu():
     global active_project
-
-    manager = multiprocessing.Manager()
-    projects = manager.dict()
-    projects['None'] = 0
-    projects['lol'] = 0
 
     while True:
         print("(1) See current project's time\n(2) Change active project\n(3) Add project\n(4) Exit")
         option = input("--> ")
 
         if option == '1':
-            print(f"\nActive project: {active_project}\nTime elapsed: {projects[active_project]} seconds\n")
+            try:
+                print(f"\nActive project: {active_project}\nTime elapsed: {projects[active_project]} seconds\n")
+            except:
+                print("key error (aaa)\n")
 
         elif option == '2':
             for p in projects:
@@ -89,6 +105,7 @@ def menu():
 
                 clock_process = multiprocessing.Process(target=clock, args=(projects,))
                 clock_process.start()
+                time.sleep(1)
                 print("Clock Process Started\n")
 
             else:
@@ -112,9 +129,10 @@ def menu():
 
 
 if __name__ == '__main__':
+    with multiprocessing.Manager() as manager:
+        projects = manager.dict()
 
+        projects['None'] = 0
+        projects['lol'] = 0
 
     menu()
-
-
-'''
