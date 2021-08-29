@@ -82,21 +82,22 @@ def menu():
         option = input("--> ")
 
         if option == '1':
-            print(f"\nActive project: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{active_project}{Style.RESET_ALL}\n" +
-                  f"Time elapsed: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{projects[active_project]} seconds" +
-                  f"{Style.RESET_ALL}\n")
+            print(f"\nActive project: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{active_project}{Style.RESET_ALL}")
+            display_time(projects[active_project])
 
         elif option == '2':
+            print("")
             for p in projects:
-                print(f"\nName: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{p}{Style.RESET_ALL}\n" +
-                      f"Time elapsed: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{projects[p]} seconds{Style.RESET_ALL}\n")
+                print(f"Name: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{p}{Style.RESET_ALL}")
+                display_time(projects[p])
 
         elif option == '3':
+            print("")
             for p in projects:
-                print(f"\nName: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{p}{Style.RESET_ALL}\n" +
-                      f"Time elapsed: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{projects[p]} seconds{Style.RESET_ALL}")
+                print(f"Name: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{p}{Style.RESET_ALL}")
+                display_time(projects[p])
 
-            proj_name = input("\nInput the project name: ")
+            proj_name = input("Input the project name: ")
             print("")
 
             if proj_name == 'None':
@@ -124,11 +125,13 @@ def menu():
                 print(Back.BLUE + Fore.LIGHTWHITE_EX + "\nDone\n")
 
         elif option == '5':
+            print("")
             for p in projects:
-                print(f"\nName: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{p}{Style.RESET_ALL}\n" +
-                      f"Time elapsed: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{projects[p]} seconds{Style.RESET_ALL}")
+                print(f"Name: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{p}{Style.RESET_ALL}")
+                display_time(projects[p])
 
-            proj_name = input("\nInput the project name: ")
+
+            proj_name = input("Input the project name: ")
             print("")
 
             if proj_name == 'None':
@@ -154,11 +157,6 @@ def menu():
 
 if __name__ == '__main__':
 
-    while True:
-        a = input("-> ")
-        display_time(int(a))
-
-    '''
     try:
         read_file()
     except FileNotFoundError:  # if file not found create it
@@ -173,4 +171,4 @@ if __name__ == '__main__':
     clock_thread.start()
     # print("Clock Process Started\n")
     
-    menu()'''
+    menu()
