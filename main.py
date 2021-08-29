@@ -66,9 +66,7 @@ def menu():
         elif option == '2':
             for p in projects:
                 print(f"\nName: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{p}{Style.RESET_ALL}\n" +
-                      f"Time elapsed: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{projects[p]} seconds{Style.RESET_ALL}")
-
-            print("")  # adds newline
+                      f"Time elapsed: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{projects[p]} seconds{Style.RESET_ALL}\n")
 
         elif option == '3':
             for p in projects:
@@ -89,6 +87,7 @@ def menu():
                     print(Back.RED + Fore.LIGHTWHITE_EX + "That project is already active\n")
                 else:
                     active_project = proj_name
+                    print(Back.BLUE + Fore.LIGHTWHITE_EX + "Done\n")
 
             else:
                 print(Back.RED + Fore.LIGHTWHITE_EX + "Incorrect Project Name\n")
@@ -99,7 +98,7 @@ def menu():
                 print(Back.RED + Fore.LIGHTWHITE_EX + "\nA project with that name already exists\n")
             else:
                 projects[proj_name] = 0  # add project to dictionary
-                print("")
+                print(Back.BLUE + Fore.LIGHTWHITE_EX + "\nDone\n")
 
         elif option == '5':
             for p in projects:
@@ -116,6 +115,7 @@ def menu():
                 if proj_name == active_project:  # if you delete the current active project
                     active_project = 'None'
                 del projects[proj_name]
+                print(Back.BLUE + Fore.LIGHTWHITE_EX + "Done\n")
 
             else:
                 print(Back.RED + Fore.LIGHTWHITE_EX + "Incorrect Project Name\n")
