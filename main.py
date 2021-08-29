@@ -12,11 +12,37 @@ projects = {'None': 0}
 def clock():
     while True:
         if active_project == 'None':
+            file_thread = threading.Thread(target=write_to_file())
+            file_thread.setDaemon(True)  # doesn't hang the program when you try and leave
+            file_thread.start()
             time.sleep(1)
         else:
             projects[active_project] += 1
+            file_thread = threading.Thread(target=write_to_file())
+            file_thread.setDaemon(True)  # doesn't hang the program when you try and leave
+            file_thread.start()
             time.sleep(1)
             # print(f'{clock_time}')
+
+
+def read_file():
+    file = open("db.txt")
+    for line in file:
+        key_file, value_file = line.split(" | ")
+        value_file = value_file.strip()
+        projects[key_file] = int(value_file)
+
+
+def write_to_file():
+    file = open("db.txt", "w")  # deletes everything and writes from beginning
+
+    i = 0
+    for project in projects:
+        if i == 0:  # doesn't include \n in 1st line
+            file.write(f"{project} | {projects[project]}")
+        else:  # all other lines
+            file.write(f"\n{project} | {projects[project]}")
+        i += 1
 
 
 def menu():
@@ -104,8 +130,18 @@ def menu():
 
 
 if __name__ == '__main__':
+
+    try:
+        read_file()
+    except FileNotFoundError:  # if file not found create it
+        write_to_file()
+    except:
+        print(Back.RED + Fore.LIGHTWHITE_EX +
+              "db.txt is damaged, if it can't be fixed please delete it and run me again")
+        exit(1)
+
     clock_thread = threading.Thread(target=clock)
-    clock_thread.setDaemon(True)
+    clock_thread.setDaemon(True)  # doesn't hang the program when you try and leave
     clock_thread.start()
     # print("Clock Process Started\n")
 
