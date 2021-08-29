@@ -1,6 +1,35 @@
 import multiprocessing
 import time
 
+def f(d):
+    secs = 0
+    while True:
+        time.sleep(1)
+        secs += 1
+        d['a'] = secs
+
+
+def menu():
+    p = multiprocessing.Process(target=f, args=(d,))
+    p.start()
+
+    while True:
+        time.sleep(0.5)
+        print(d)
+
+
+if __name__ == '__main__':
+    with multiprocessing.Manager() as manager:
+        d = manager.dict()
+
+        menu()
+
+
+
+
+'''import multiprocessing
+import time
+
 
 active_project = 'None'
 #projects = {'None': 0, 'LOL': 0}
@@ -19,6 +48,11 @@ def clock(arg_projects):
 
 def menu():
     global active_project
+
+    manager = multiprocessing.Manager()
+    projects = manager.dict()
+    projects['None'] = 0
+    projects['lol'] = 0
 
     while True:
         print("(1) See current project's time\n(2) Change active project\n(3) Add project\n(4) Exit")
@@ -78,12 +112,9 @@ def menu():
 
 
 if __name__ == '__main__':
-    manager = multiprocessing.Manager()
-    projects = manager.dict()
-    projects['None'] = 0
-    projects['lol'] = 0
+
 
     menu()
 
 
-
+'''
