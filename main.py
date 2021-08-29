@@ -6,14 +6,15 @@ active_project = 'None'
 #projects = {'None': 0, 'LOL': 0}
 
 
-def clock():
+
+def clock(arg_projects):
     solid_active_project = active_project  # to prevent the change of active_project carring times before thread is killed
-    clock_time = projects[solid_active_project]  # start clock where the project already was
+    clock_time = arg_projects[solid_active_project]  # start clock where the project already was
     while True:
         clock_time += 1
         time.sleep(1)
         # print(f'{clock_time}')
-        projects[solid_active_project] = clock_time
+        arg_projects[solid_active_project] = clock_time
 
 
 def menu():
@@ -52,7 +53,7 @@ def menu():
                 except UnboundLocalError:
                     print("No Clock Process Running\n")
 
-                clock_process = multiprocessing.Process(target=clock, args=())
+                clock_process = multiprocessing.Process(target=clock, args=(projects,))
                 clock_process.start()
                 print("Clock Process Started\n")
 
