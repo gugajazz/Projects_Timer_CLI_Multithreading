@@ -3,7 +3,7 @@ import time
 import colorama
 from colorama import Fore, Back, Style
 
-colorama.init(autoreset=True)  # makes color work on win
+colorama.init()  # makes color work on win
 
 active_project = 'None'
 projects = {'None': 0}
