@@ -45,6 +45,29 @@ def write_to_file():
         i += 1
 
 
+def display_time(secs):
+
+    if secs >= 60:
+        minutes = secs // 60
+        secs = secs - (minutes * 60)
+        if minutes >= 60:
+            hours = minutes // 60
+            minutes = minutes - (hours * 60)
+            if hours >= 24:
+                days = hours // 24
+                hours = hours - (days * 24)
+                print(f"Time elapsed: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{days} days," +
+                      "{hours} hours, {minutes} minutes and {secs} seconds")
+            else:
+                print(f"Time elapsed: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{hours} hours, {minutes} minutes and {secs} seconds")
+        else:
+            print(f"Time elapsed: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{minutes} minutes and {secs} seconds")
+    else:
+        print(f"Time elapsed: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{secs} seconds")
+
+    print(Style.RESET_ALL)
+
+
 def menu():
     global active_project
 
@@ -131,6 +154,11 @@ def menu():
 
 if __name__ == '__main__':
 
+    while True:
+        a = input("-> ")
+        display_time(int(a))
+
+    '''
     try:
         read_file()
     except FileNotFoundError:  # if file not found create it
@@ -139,10 +167,10 @@ if __name__ == '__main__':
         print(Back.RED + Fore.LIGHTWHITE_EX +
               "db.txt is damaged, if it can't be fixed please delete it and run me again")
         exit(1)
-
+    
     clock_thread = threading.Thread(target=clock)
     clock_thread.setDaemon(True)  # doesn't hang the program when you try and leave
     clock_thread.start()
     # print("Clock Process Started\n")
-
-    menu()
+    
+    menu()'''
