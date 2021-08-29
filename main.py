@@ -3,7 +3,7 @@ import time
 
 
 active_project = 'None'
-projects = {'None': 0, 'LOL': 0}
+projects = {'None': 0}
 
 
 def clock():
@@ -20,7 +20,9 @@ def menu():
     global active_project
 
     while True:
-        print("(1) See current project's time\n(2) Change active project\n(3) Add project\n(4) Exit")
+        print("(1) See current project's time\n(2) See all projects\n(3) Change active project\n\
+(4) Add project\n(5) Exit")
+
         option = input("--> ")
 
         if option == '1':
@@ -30,7 +32,14 @@ def menu():
             for p in projects:
                 print(f"\nName: {p}\nTime elapsed: {projects[p]} seconds")
 
+            print("")  # adds newline
+
+        elif option == '3':
+            for p in projects:
+                print(f"\nName: {p}\nTime elapsed: {projects[p]} seconds")
+
             proj_name = input("\nInput the project name: ")
+            print("")
 
             if proj_name == 'None':
                 active_project = proj_name
@@ -41,11 +50,12 @@ def menu():
             else:
                 print("Incorrect Project Name\n")
 
-        elif option == '3':
-            proj_name = input("Input the project name: ")
-            projects[proj_name] = 0  # add project to dictionary
-
         elif option == '4':
+            proj_name = input("\nInput the project name: ")
+            projects[proj_name] = 0  # add project to dictionary
+            print("")
+
+        elif option == '5':
             exit(1)
 
         else:
@@ -54,7 +64,8 @@ def menu():
 
 if __name__ == '__main__':
     clock_thread = threading.Thread(target=clock)
+    clock_thread.setDaemon(True)
     clock_thread.start()
-    print("Clock Process Started\n")
+    #print("Clock Process Started\n")
 
     menu()
