@@ -56,8 +56,8 @@ def display_time(secs):
             if hours >= 24:
                 days = hours // 24
                 hours = hours - (days * 24)
-                print(f"Time elapsed: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{days} days," +
-                      "{hours} hours, {minutes} minutes and {secs} seconds")
+                print(f"Time elapsed: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{days} days, " +
+                      f"{hours} hours, {minutes} minutes and {secs} seconds")
             else:
                 print(f"Time elapsed: {Back.MAGENTA + Fore.LIGHTWHITE_EX}{hours} hours, {minutes} minutes and {secs} seconds")
         else:
