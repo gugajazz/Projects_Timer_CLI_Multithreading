@@ -1,6 +1,6 @@
 <h1 class="code-line" data-line-start=0 data-line-end=1 ><a id="Projects_Timer_CLI_Multithreading_0"></a>Projects_Timer_CLI_Multithreading</h1>
 <p class="has-line-data" data-line-start="2" data-line-end="4">Simple command line interface to manage time spent on different projects.<br>
-Created partially to dip my metaphorical toes in the world of multithreading and parallel computing, but also to satisfy a need for software of this nature.</p>
+Created partially to dip my metaphorical toes in the world of multithreading and parallel computing, but also to satisfy a need of mine for software of this nature.</p>
 <h2 class="code-line" data-line-start=6 data-line-end=7 ><a id="Features_6"></a>Features</h2>
 <ul>
 <li class="has-line-data" data-line-start="8" data-line-end="9">Colorama to display colors even on win systems</li>
