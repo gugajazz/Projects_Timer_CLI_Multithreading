@@ -1,4 +1,4 @@
-<h1 class="code-line" data-line-start=0 data-line-end=1 ><a id="Projects_Timer_CLI_Multithreading_0"></a>Projects_Timer_CLI_Multithreading</h1>
+# Projects_Timer_CLI_Multithreading
 ## _Simple and hopefully intuitive command line interface to manage time spent on different projects._
 
 Created partially to dip my metaphorical toes in the world of multithreading and parallel computing, but also to satisfy a need of mine for software of this nature.</p>
